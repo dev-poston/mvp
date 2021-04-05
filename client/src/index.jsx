@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import API from './API.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -9,13 +10,19 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    API.readAll((data) => {
+      console.log('AJAX DATA - CLIENT-SIDE: ', data);
+    })
+  }
+
   render() {
     return (
       <div>
-        <h1>Hello World</h1>
+        <h1>MyTrack Feedback</h1>
       </div>
     )
   }
 }
 
-ReactDom.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));

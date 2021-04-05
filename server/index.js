@@ -1,0 +1,23 @@
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const path = require('path');
+
+app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({entended: true}));
+
+app.get('/tracks', (req, res) => {
+  res.status(200).send('hello world');
+});
+
+app.post('/tracks', (req, res) => {
+  res.send('post req', req);
+});
+
+app.listen(port, () => {
+  console.log(`Listening on Port: ${port}`);
+});
