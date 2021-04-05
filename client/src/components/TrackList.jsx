@@ -3,7 +3,7 @@ import TrackItem from './TrackItem.jsx';
 
 const TrackList = (props) => (
   <div>
-    <h5>Top 10 Tracks:</h5>
+    <h5>Top {props.tracks.length} Tracks:</h5>
     <table>
       <thead>
         <tr>
@@ -17,6 +17,7 @@ const TrackList = (props) => (
           <TrackItem
             key={index}
             track={item}
+            search={props.search}
           />
         ))}
       </tbody>
