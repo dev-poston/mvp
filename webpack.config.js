@@ -1,70 +1,62 @@
-// let path = require('path');
+const path = require('path');
+const SRC_DIR = path.join(__dirname, '/client/src');
+const DIST_DIR = path.join(__dirname, '/client/dist');
 
 // module.exports = {
-//   entry: './client/src/index.jsx',
+//   entry: `${SRC_DIR}/index.jsx`,
 //   output: {
 //     filename: 'bundle.js',
-//     path: path.join(__dirname, '/dist')
+//     path: DIST_DIR
 //   },
 //   module: {
 //     rules: [
 //       {
+//         test: /\.css$/,
+//         use: [
+//           'style-loader',
+//           'css-loader'
+//         ]
+//       },
+//       {
 //         test: /\.(js|jsx)$/,
-//         loader: 'babel-loader',
-//         query: {
-//           presets: ['react', 'es2015']
-//         }
+//         exclude: /node_modules/,
+//         include: SRC_DIR,
+//         use: [
+//           {
+//             loader: 'babel-loader',
+//             options: {
+//               cacheDirectory: true
+//             }
+//           }
+//         ]
 //       },
 //       {
-//         test: /\.css$/i,
-//         loader: ['style-loader', 'css-loader'],
-//       },
-//       {
-//         test: /\.(jpe?g|png|gif|svg)$/i,
-//         loader: 'file-loader',
-//         options: {
-//           name: '/public/icons/[name].[ext]'
-//         }
+//         test: /\.html$/i,
+//         loader: 'html-loader',
 //       }
 //     ]
+//   },
+//   resolve: {
+//     extensions: ['*', '.js', '.jsx']
 //   }
 // };
 
-const path = require('path');
-const src_dir = path.join(__dirname, '/client/src');
-const dist_dir = path.join(__dirname, '/client/dist');
-
 module.exports = {
-  entry: [`${src_dir}/index.jsx`],
+  entry: `${SRC_DIR}/index.jsx`,
   output: {
     filename: 'bundle.js',
-    path: dist_dir
+    path: DIST_DIR
   },
-  module: {
-    rules: [
+  module : {
+    loaders : [
       {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      },
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        include: src_dir,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              cacheDirectory: true
-            }
-          }
-        ]
+        test : /\.jsx?/,
+        include : SRC_DIR,
+        loader : 'babel-loader',
+        query: {
+          presets: ['react', 'es2015']
+        }
       }
     ]
-  },
-  resolve: {
-    extensions: ['*', '.js', '.jsx']
   }
 };
