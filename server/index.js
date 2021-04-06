@@ -13,7 +13,14 @@ app.use(bodyParser.urlencoded({entended: true}));
 
 app.get('/tracks', (req, res) => {
   console.log('GET REQ SERVER-SIDE', req.body);
-  res.status(200).send(req.body);
+  db.find({}, (err, data) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      console.log('FINDALL DATA SERVER-SIDE: ', data);
+      res.status(200).send(data);
+    }
+  })
 });
 
 app.post('/trackSearch', (req, res) => {
@@ -26,7 +33,7 @@ app.post('/trackSubmit', (req, res) => {
   console.log('SUBMIT POST REQ SERVER-SIDE', req.body);
   db.save(req.body, [], (err, data) => {
     if (err) {
-      res.status(400).send(200);
+      res.status(400).send(err);
     } else {
       console.log('SAVED DATA: ', data);
       res.status(200).send('NEW TRACK SAVED TO DB!');

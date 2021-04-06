@@ -5,7 +5,7 @@ const TrackItem = (props) => (
     <td>{props.track.username}</td>
     <td>{props.track.track_name}</td>
     <td><a href={props.track.track_url}>{props.track.track_url}</a></td>
-    <td>{props.track.comments}</td>
+    <td>{props.track.comments.length}</td>
   </tr>
 );
 

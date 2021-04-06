@@ -18,6 +18,9 @@ class App extends React.Component {
   componentDidMount() {
     API.readAll((data) => {
       console.log('AJAX CDM/READALL CLIENT-SIDE: ', data);
+      this.setState({
+        tracks: data
+      });
     });
   };
 
