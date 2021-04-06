@@ -15,7 +15,7 @@ module.exports = {
   readOne: (options, successCB) => {
     $.ajax({
       url: '/tracks',
-      type: 'GET',
+      type: 'POST',
       data: JSON.stringify(options),
       contentType: 'application/json',
       success: successCB,

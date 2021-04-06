@@ -12,18 +12,26 @@ class App extends React.Component {
       tracks: []
     };
     this.onSearch = this.onSearch.bind(this);
+    this.submitTrack = this.submitTrack.bind(this);
   }
 
   componentDidMount() {
     API.readAll((data) => {
-      console.log('AJAX CDM @ CLIENT-SIDE: ', data);
+      console.log('AJAX CDM/READALL CLIENT-SIDE: ', data);
     });
-  }
+  };
 
   onSearch(username) {
     console.log('YOU SEARCHED FOR: ', username);
-    API.sendItem({username: username}, (data) => {
-      console.log('AJAX ONSEARCH @ CLIENT-SIDE: ', data)
+    API.readOne({username: username}, (data) => {
+      console.log('READONE CLIENT-SIDE: ', data);
+    });
+  };
+
+  submitTrack(options) {
+    console.log('YOU SUBMITTED: ', options);
+    API.sendItem(options, (data) => {
+      console.log('SENDITEM CLIENT-SIDE: ', data);
     });
   };
 
@@ -35,10 +43,10 @@ class App extends React.Component {
         <TrackList tracks={this.state.tracks}/>
         <br/>
         <h5>Submit a Track for Feedback:</h5>
-        <SubmitTrack />
+        <SubmitTrack submitTrack={this.submitTrack}/>
       </div>
     )
-  }
-}
+  };
+};
 
 ReactDOM.render(<App />, document.getElementById('app'));

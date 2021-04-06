@@ -5,19 +5,18 @@ class Search extends React.Component {
     super(props);
     this.state = {
       item: ''
-    }
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
-    console.log('TARGET: ', e.target.value);
     this.setState({
       item: e.target.value
-    })
+    });
   };
 
-  handleSubmit() {
+  handleSubmit(e) {
     e.preventDefault();
     this.props.search(this.state.item);
   };

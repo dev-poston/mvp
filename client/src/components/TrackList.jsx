@@ -8,8 +8,8 @@ const TrackList = (props) => (
       <thead>
         <tr>
           <th>Username</th>
-          <th>Track Name</th>
-          <th>Track Link</th>
+          <th>Song Title</th>
+          <th>Link</th>
           <th>Comments</th>
         </tr>
       </thead>

@@ -22,8 +22,8 @@ let Track = mongoose.model('Track', trackSchema);
 let save = (track, comments, callback) => {
   let Docs = new Track({
     username: track.username,
-    track_name: track.trackName,
-    track_url: track.url,
+    trackName: track.trackName,
+    link: track.link,
     comments: comments
   });
   Docs.save()
@@ -46,11 +46,19 @@ let find = (username, callback) => {
     .catch((error) => {
       console.log('FAILED TO SEARCH DB: ', error);
       callback(error);
-    })
+    });
 };
 
 let update = (trackName, updateComments, callback) => {
-  Track.update({})
+  Track.update({track_name: trackName}, {$set: updateComments})
+    .then((data) => {
+      console.log('UPDATING DATA...', data);
+      callback(null, data);
+    })
+    .catch((error) => {
+      console.log('FAILED TO UPDATE DATA: ', error);
+      callback(error);
+    });
 };
 
 module.exports = {save, find, update};
