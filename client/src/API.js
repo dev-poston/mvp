@@ -14,7 +14,7 @@ module.exports = {
 
   readOne: (options, successCB) => {
     $.ajax({
-      url: '/tracks',
+      url: '/trackSearch',
       type: 'POST',
       data: JSON.stringify(options),
       contentType: 'application/json',
@@ -27,7 +27,7 @@ module.exports = {
 
   sendItem: (options, successCB) => {
     $.ajax({
-      url: '/tracks',
+      url: '/trackSubmit',
       type: 'POST',
       data: JSON.stringify(options),
       contentType: 'application/json',

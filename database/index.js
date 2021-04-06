@@ -22,8 +22,8 @@ let Track = mongoose.model('Track', trackSchema);
 let save = (track, comments, callback) => {
   let Docs = new Track({
     username: track.username,
-    trackName: track.trackName,
-    link: track.link,
+    track_name: track.track_name,
+    track_url: track.track_url,
     comments: comments
   });
   Docs.save()

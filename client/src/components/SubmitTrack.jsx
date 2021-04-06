@@ -5,8 +5,8 @@ class SubmitTrack extends React.Component {
     super(props);
     this.state = {
       username: '',
-      trackName: '',
-      link: ''
+      track_name: '',
+      track_url: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -22,13 +22,13 @@ class SubmitTrack extends React.Component {
 
   handleTrackNameChange(e) {
     this.setState({
-      trackName: e.target.value
+      track_name: e.target.value
     });
   };
 
   handleLinkChange(e) {
     this.setState({
-      link: e.target.value
+      track_url: e.target.value
     });
   };
 

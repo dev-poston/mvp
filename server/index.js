@@ -16,9 +16,22 @@ app.get('/tracks', (req, res) => {
   res.status(200).send(req.body);
 });
 
-app.post('/tracks', (req, res) => {
-  console.log('POST REQ SERVER-SIDE', req.body);
+app.post('/trackSearch', (req, res) => {
+  console.log('SEARCH POST REQ SERVER-SIDE', req.body);
+
   res.status(200).send(req.body);
+});
+
+app.post('/trackSubmit', (req, res) => {
+  console.log('SUBMIT POST REQ SERVER-SIDE', req.body);
+  db.save(req.body, [], (err, data) => {
+    if (err) {
+      res.status(400).send(200);
+    } else {
+      console.log('SAVED DATA: ', data);
+      res.status(200).send('NEW TRACK SAVED TO DB!');
+    }
+  })
 });
 
 app.listen(port, () => {
