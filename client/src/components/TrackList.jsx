@@ -8,6 +8,7 @@ const TrackList = (props) => (
       <thead>
         <tr>
           <th>Username</th>
+          <th>Track Name</th>
           <th>Track Link</th>
           <th>Comments</th>
         </tr>
@@ -17,7 +18,6 @@ const TrackList = (props) => (
           <TrackItem
             key={index}
             track={item}
-            search={props.search}
           />
         ))}
       </tbody>

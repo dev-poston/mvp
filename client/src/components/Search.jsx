@@ -11,6 +11,7 @@ class Search extends React.Component {
   }
 
   handleChange(e) {
+    console.log('TARGET: ', e.target.value);
     this.setState({
       item: e.target.value
     })
@@ -18,18 +19,19 @@ class Search extends React.Component {
 
   handleSubmit() {
     e.preventDefault();
+    this.props.search(this.state.item);
   };
 
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" onChange={this.handleChange}/>
-          <input type="submit"/>
+          <input type="text" placeholder="Search for Tracks" onChange={this.handleChange}/>
+          <input type="submit" value="Search"/>
         </form>
       </div>
     )
-  }
+  };
 };
 
 export default Search;
