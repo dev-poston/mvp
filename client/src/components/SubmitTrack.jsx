@@ -41,7 +41,7 @@ class SubmitTrack extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Username" onChange={this.handleUsernameChange}/>
+          <input type="text" placeholder="Artist Name" onChange={this.handleUsernameChange}/>
           <input type="text" placeholder="Track Name" onChange={this.handleTrackNameChange}/>
           <input type="text" placeholder="Track Link" onChange={this.handleLinkChange}/>
           <input type="submit"/>

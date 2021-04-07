@@ -7,7 +7,7 @@ const TrackList = (props) => (
     <table>
       <thead>
         <tr>
-          <th>Username</th>
+          <th>Artist Name</th>
           <th>Song Title</th>
           <th>Link</th>
           <th>Comments</th>

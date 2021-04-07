@@ -28,6 +28,9 @@ class App extends React.Component {
     console.log('YOU SEARCHED FOR: ', username);
     API.readOne({username: username}, (data) => {
       console.log('READONE CLIENT-SIDE: ', data);
+      this.setState({
+        tracks: data
+      });
     });
   };
 

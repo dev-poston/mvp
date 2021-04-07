@@ -25,7 +25,7 @@ class Search extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="Search for Tracks" onChange={this.handleChange}/>
+          <input type="text" placeholder="Search by Artist Name" onChange={this.handleChange}/>
           <input type="submit" value="Search"/>
         </form>
       </div>

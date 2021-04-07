@@ -37,8 +37,8 @@ let save = (track, comments, callback) => {
     });
 };
 
-let find = (username, callback) => {
-  Track.find(username).limit(10).sort({comments: -1})
+let find = (query, callback) => {
+  Track.find(query).limit(10).sort({comments: -1})
     .then((data) => {
       console.log('SEARCHING DB...');
       callback(null, data);

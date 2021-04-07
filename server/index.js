@@ -20,25 +20,43 @@ app.get('/tracks', (req, res) => {
       console.log('FINDALL DATA SERVER-SIDE: ', data);
       res.status(200).send(data);
     }
-  })
+  });
 });
 
 app.post('/trackSearch', (req, res) => {
   console.log('SEARCH POST REQ SERVER-SIDE', req.body);
-
-  res.status(200).send(req.body);
+  db.find(req.body, (err, data) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      res.status(200).send(data);
+    }
+  });
 });
 
 app.post('/trackSubmit', (req, res) => {
   console.log('SUBMIT POST REQ SERVER-SIDE', req.body);
-  db.save(req.body, [], (err, data) => {
+  db.find({
+    track_name: req.body.track_name,
+    username: req.body.username
+  }, (err, data) => {
     if (err) {
       res.status(400).send(err);
     } else {
-      console.log('SAVED DATA: ', data);
-      res.status(200).send('NEW TRACK SAVED TO DB!');
+      if (data.length) {
+        res.status(200).send('TRACK ALREADY EXSISTS');
+      } else {
+        db.save(req.body, [], (err, data) => {
+          if (err) {
+            res.status(400).send(err);
+          } else {
+            console.log('SAVED DATA: ', data);
+            res.status(200).send('NEW TRACK SAVED TO DB!');
+          }
+        });
+      }
     }
-  })
+  });
 });
 
 app.listen(port, () => {
