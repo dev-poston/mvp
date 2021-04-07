@@ -1,8 +1,8 @@
 import React from 'react';
 
 const TrackComments = (props) => (
-  <div>
-    <h3>{props.comment}</h3>
+  <div className="comment">
+    <h3>"{props.comment}" - AnonymousUser</h3>
   </div>
 );
 

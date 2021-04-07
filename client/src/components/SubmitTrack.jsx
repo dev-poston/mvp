@@ -6,7 +6,8 @@ class SubmitTrack extends React.Component {
     this.state = {
       username: '',
       track_name: '',
-      track_url: ''
+      track_url: '',
+      comments: [],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);

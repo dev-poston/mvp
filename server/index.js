@@ -44,14 +44,23 @@ app.post('/trackSubmit', (req, res) => {
       res.status(400).send(err);
     } else {
       if (data.length) {
-        res.status(200).send('TRACK ALREADY EXSISTS');
+        res.status(200).send(data);
       } else {
-        db.save(req.body, [], (err, data) => {
+        db.save(req.body, (err, data) => {
           if (err) {
             res.status(400).send(err);
           } else {
-            console.log('SAVED DATA: ', data);
-            res.status(200).send('NEW TRACK SAVED TO DB!');
+            db.find({
+              track_name: req.body.track_name,
+              username: req.body.username
+            }, (err, data) => {
+              if (err) {
+                res.status(400).send(err);
+              } else {
+                console.log('TRACK FOUND');
+                res.status(200).send(data);
+              }
+            });
           }
         });
       }

@@ -20,10 +20,11 @@ const TrackItem = (props) => {
           trackComments={props.track.comments}
           submitComment={props.submitComment}
         />
+        <br/>
         <div>
           {props.track.comments.map((item, index) => (
             <TrackComments
-              item={item}
+              comment={item}
               key={index}
             />
           ))}
@@ -48,6 +49,7 @@ const TrackItem = (props) => {
           trackComments={props.track.comments}
           submitComment={props.submitComment}
         />
+        <br/>
         <div>
           {props.track.comments.map((item, index) => (
             <TrackComments
@@ -74,6 +76,7 @@ const TrackItem = (props) => {
           submitComment={props.submitComment}
         />
         <div>
+        <br/>
           {props.track.comments.map((item, index) => (
             <TrackComments
               comment={item}
@@ -96,6 +99,7 @@ const TrackItem = (props) => {
           trackComments={props.track.comments}
           submitComment={props.submitComment}
         />
+        <br/>
         <div>
           {props.track.comments.map((item, index) => (
             <TrackComments

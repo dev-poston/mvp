@@ -39,6 +39,9 @@ class App extends React.Component {
     console.log('YOU SUBMITTED: ', options);
     API.sendItem(options, (data) => {
       console.log('SENDITEM CLIENT-SIDE: ', data);
+      this.setState({
+        tracks: data
+      });
     });
   };
 

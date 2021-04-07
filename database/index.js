@@ -14,17 +14,19 @@ let trackSchema = mongoose.Schema({
   username: String,
   track_name: String,
   track_url: String,
-  comments: [String]
+  comments: [String],
+  commentCount: Number
 });
 
 let Track = mongoose.model('Track', trackSchema);
 
-let save = (track, comments, callback) => {
+let save = (track, callback) => {
   let Docs = new Track({
     username: track.username,
     track_name: track.track_name,
     track_url: track.track_url,
-    comments: comments
+    comments: track.comments,
+    commentCount: track.comments.length
   });
   Docs.save()
     .then((data) => {
@@ -38,7 +40,7 @@ let save = (track, comments, callback) => {
 };
 
 let find = (query, callback) => {
-  Track.find(query).limit(10).sort({comments: -1})
+  Track.find(query).limit(10).sort({commentCount: -1})
     .then((data) => {
       console.log('SEARCHING DB...');
       callback(null, data);
