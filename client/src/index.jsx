@@ -57,13 +57,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>MyTrack Feedback v1.0</h1>
+        <h1>MyTrack Feedback</h1>
         <br/>
         <h5>Submit a Track for Feedback:</h5>
         <SubmitTrack submitTrack={this.submitTrack}/>
-        <br/>
-        OR
-        <br/>
         <br/>
         <Search search={this.onSearch}/>
         <TrackList

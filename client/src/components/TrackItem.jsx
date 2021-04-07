@@ -4,7 +4,7 @@ import TrackComments from './TrackComments.jsx';
 
 const TrackItem = (props) => {
   if (props.track.track_url.includes('soundcloud')) {
-    let scLink = 'https://w.soundcloud.com/player/?url=https://soundcloud.com/' + props.track.username + '/' + props.track.track_name;
+    let scLink = 'https://w.soundcloud.com/player/?url=' + props.track.track_url;
     return (
       <div className="item">
         <h4>Artist: {props.track.username}</h4>

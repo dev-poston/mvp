@@ -28,6 +28,9 @@ class CommentSubmit extends React.Component {
       track_name: this.state.track_name,
       comments: comments
     });
+    this.setState({
+      newComment: ''
+    });
   };
 
   render() {
