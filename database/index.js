@@ -49,8 +49,8 @@ let find = (query, callback) => {
     });
 };
 
-let update = (trackName, updateComments, callback) => {
-  Track.update({track_name: trackName}, {$set: updateComments})
+let update = (options, callback) => {
+  Track.update({track_name: options.track_name, username: options.username}, {$set: {comments: options.comments}})
     .then((data) => {
       console.log('UPDATING DATA...', data);
       callback(null, data);

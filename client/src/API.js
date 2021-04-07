@@ -36,5 +36,18 @@ module.exports = {
         console.log('AJAX POST REQ FAILED: ', error);
       }
     });
+  },
+
+  sendComment: (options, successCB) => {
+    $.ajax({
+      url: '/commentSubmit',
+      type: 'POST',
+      data: JSON.stringify(options),
+      contentType: 'application/json',
+      success: successCB,
+      error: (error) => {
+        console.log('AJAX POST REQ FAILED: ', error);
+      }
+    });
   }
 };

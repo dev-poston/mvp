@@ -59,6 +59,24 @@ app.post('/trackSubmit', (req, res) => {
   });
 });
 
+app.post('/commentSubmit', (req, res) => {
+  console.log('COMMENT SUBMIT @ SERVER-SIDE', req.body);
+  db.update(req.body, (err, data) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      db.find({}, (err, data) => {
+        if (err) {
+          res.status(400).send(err);
+        } else {
+          console.log('FINDALL DATA SERVER-SIDE: ', data);
+          res.status(200).send(data);
+        }
+      });
+    }
+  })
+});
+
 app.listen(port, () => {
   console.log(`Listening on Port: ${port}`);
 });

@@ -13,7 +13,8 @@ class App extends React.Component {
     };
     this.onSearch = this.onSearch.bind(this);
     this.submitTrack = this.submitTrack.bind(this);
-  }
+    this.submitComment = this.submitComment.bind(this);
+  };
 
   componentDidMount() {
     API.readAll((data) => {
@@ -41,15 +42,31 @@ class App extends React.Component {
     });
   };
 
+  submitComment(options) {
+    API.sendComment(options, (data) => {
+      console.log('SEND COMMENT CLIENT-SIDE: ', data);
+      this.setState({
+        tracks: data
+      });
+    });
+  };
+
   render() {
     return (
       <div>
         <h1>MyTrack Feedback v1.0</h1>
-        <Search search={this.onSearch}/>
-        <TrackList tracks={this.state.tracks}/>
         <br/>
         <h5>Submit a Track for Feedback:</h5>
         <SubmitTrack submitTrack={this.submitTrack}/>
+        <br/>
+        OR
+        <br/>
+        <br/>
+        <Search search={this.onSearch}/>
+        <TrackList
+          tracks={this.state.tracks}
+          submitComment={this.submitComment}
+        />
       </div>
     )
   };
