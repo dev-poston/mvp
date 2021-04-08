@@ -4,9 +4,9 @@ class CommentSubmit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: this.props.username,
-      track_name: this.props.track_name,
-      comments: this.props.trackComments,
+      // username: this.props.username,
+      // track_name: this.props.track_name,
+      // comments: this.props.trackComments,
       newComment: ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -21,15 +21,12 @@ class CommentSubmit extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let comments = this.state.comments
-    comments.push(this.state.newComment);
+    let username = e.target.parentNode.parentNode.children[0].innerText.slice(8);
+    let track_name = e.target.parentNode.parentNode.children[1].innerText.slice(12);
     this.props.submitComment({
-      username: this.state.username,
-      track_name: this.state.track_name,
-      comments: comments
-    });
-    this.setState({
-      newComment: ''
+      username: username,
+      track_name: track_name,
+      newComment: this.state.newComment
     });
   };
 

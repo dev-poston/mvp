@@ -10,9 +10,10 @@ const TrackList = (props) => (
           <TrackItem
           key={index}
           track={item}
+          search={props.search}
           submitComment={props.submitComment}
           />
-          ))}
+        ))}
         <div className="top10">
           <h3 >Top {props.topTracks.length} Tracks:</h3>
           {props.topTracks.map((item, index) => (
@@ -20,7 +21,7 @@ const TrackList = (props) => (
             key={index}
             track={item}
             />
-            ))}
+          ))}
         </div>
       </div>
     </div>

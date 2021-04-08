@@ -19,6 +19,7 @@ const TrackItem = (props) => {
           track_name={props.track.track_name}
           trackComments={props.track.comments}
           submitComment={props.submitComment}
+          search={props.search}
         />
         <br/>
         <div>
@@ -48,6 +49,7 @@ const TrackItem = (props) => {
           track_name={props.track.track_name}
           trackComments={props.track.comments}
           submitComment={props.submitComment}
+          search={props.search}
         />
         <br/>
         <div>
@@ -74,6 +76,7 @@ const TrackItem = (props) => {
           track_name={props.track.track_name}
           trackComments={props.track.comments}
           submitComment={props.submitComment}
+          search={props.search}
         />
         <div>
         <br/>
@@ -98,6 +101,7 @@ const TrackItem = (props) => {
           track_name={props.track.track_name}
           trackComments={props.track.comments}
           submitComment={props.submitComment}
+          search={props.search}
         />
         <br/>
         <div>

@@ -19,7 +19,6 @@ class App extends React.Component {
 
   componentDidMount() {
     API.readAll((data) => {
-      console.log('AJAX CDM/READALL CLIENT-SIDE: ', data);
       this.setState({
         topTracks: data
       });
@@ -29,7 +28,6 @@ class App extends React.Component {
   onSearch(username) {
     console.log('YOU SEARCHED FOR: ', username);
     API.readOne({username: username}, (data) => {
-      console.log('READONE CLIENT-SIDE: ', data);
       this.setState({
         tracks: data
       });
@@ -39,12 +37,10 @@ class App extends React.Component {
   submitTrack(options) {
     console.log('YOU SUBMITTED: ', options);
     API.sendItem(options, (data) => {
-      console.log('SENDITEM CLIENT-SIDE: ', data);
       this.setState({
         tracks: data
       });
       API.readAll((data) => {
-        console.log('AJAX CDM/READALL CLIENT-SIDE: ', data);
         this.setState({
           topTracks: data
         });
@@ -54,7 +50,6 @@ class App extends React.Component {
 
   submitComment(options) {
     API.sendComment(options, (data) => {
-      console.log('SEND COMMENT CLIENT-SIDE: ', data);
       this.setState({
         tracks: data
       });
@@ -70,6 +65,7 @@ class App extends React.Component {
         <SubmitTrack submitTrack={this.submitTrack}/>
         <Search search={this.onSearch}/>
         <TrackList
+          search={this.onSearch}
           tracks={this.state.tracks}
           topTracks={this.state.topTracks}
           submitComment={this.submitComment}
