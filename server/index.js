@@ -74,7 +74,10 @@ app.post('/commentSubmit', (req, res) => {
     if (err) {
       res.status(400).send(err);
     } else {
-      db.find({}, (err, data) => {
+      db.find({
+        track_name: req.body.track_name,
+        username: req.body.username
+      }, (err, data) => {
         if (err) {
           res.status(400).send(err);
         } else {

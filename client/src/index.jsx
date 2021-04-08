@@ -9,7 +9,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tracks: []
+      tracks: [],
+      topTracks: []
     };
     this.onSearch = this.onSearch.bind(this);
     this.submitTrack = this.submitTrack.bind(this);
@@ -20,7 +21,7 @@ class App extends React.Component {
     API.readAll((data) => {
       console.log('AJAX CDM/READALL CLIENT-SIDE: ', data);
       this.setState({
-        tracks: data
+        topTracks: data
       });
     });
   };
@@ -42,6 +43,12 @@ class App extends React.Component {
       this.setState({
         tracks: data
       });
+      API.readAll((data) => {
+        console.log('AJAX CDM/READALL CLIENT-SIDE: ', data);
+        this.setState({
+          topTracks: data
+        });
+      });
     });
   };
 
@@ -59,12 +66,12 @@ class App extends React.Component {
       <div>
         <h1>MyTrack Feedback</h1>
         <br/>
-        <h5>Submit a Track for Feedback:</h5>
+        <h5 className="submitMsg">Submit a Track for Feedback:</h5>
         <SubmitTrack submitTrack={this.submitTrack}/>
-        <br/>
         <Search search={this.onSearch}/>
         <TrackList
           tracks={this.state.tracks}
+          topTracks={this.state.topTracks}
           submitComment={this.submitComment}
         />
       </div>
