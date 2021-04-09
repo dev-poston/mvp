@@ -64,7 +64,10 @@ app.post('/trackSubmit', (req, res) => {
 });
 
 app.post('/commentSubmit', (req, res) => {
-  db.find({track_name: req.body.track_name, username: req.body.username}, (err, data) => {
+  db.find({
+    track_name: req.body.track_name,
+    username: req.body.username
+  }, (err, data) => {
     data[0].comments.push(req.body.newComment);
     db.update(data[0], (err, data) => {
       if (err) {

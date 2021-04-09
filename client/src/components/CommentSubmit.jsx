@@ -4,9 +4,6 @@ class CommentSubmit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // username: this.props.username,
-      // track_name: this.props.track_name,
-      // comments: this.props.trackComments,
       newComment: ''
     };
     this.handleChange = this.handleChange.bind(this);

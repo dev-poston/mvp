@@ -52,7 +52,13 @@ let find = (query, callback) => {
 };
 
 let update = (options, callback) => {
-  Track.update({track_name: options.track_name, username: options.username}, {$set: {comments: options.comments, commentCount: options.comments.length}})
+  Track.update({
+    track_name: options.track_name,
+    username: options.username
+  }, {$set: {
+    comments: options.comments,
+    commentCount: options.comments.length
+  }})
     .then((data) => {
       console.log('UPDATING DATA...', data);
       callback(null, data);
