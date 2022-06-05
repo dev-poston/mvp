@@ -52,7 +52,7 @@ let find = (query, callback) => {
 };
 
 let update = (options, callback) => {
-  Track.update({
+  Track.updateOne({
     track_name: options.track_name,
     username: options.username
   }, {$set: {
