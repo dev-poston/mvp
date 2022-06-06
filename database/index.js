@@ -52,6 +52,7 @@ let find = (query, callback) => {
 };
 
 let update = (options, callback) => {
+  console.log('rename check')
   Track.updateOne({
     track_name: options.track_name,
     username: options.username
